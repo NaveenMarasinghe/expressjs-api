@@ -4,9 +4,11 @@ const data = require("../../db.json");
 const userRouter = express.Router();
 
 userRouter.get("/", (req: Request, res: Response) => {
-  const email = req.query.email;
-  const password = req.query.password;
+  const { email, password } = req.query;
+
   try {
+    if (!email || !password) throw new Error('Invalid credentials');
+
     const user = data.users.find(
       (o: any) => o.email === email && o.password === password
     );
