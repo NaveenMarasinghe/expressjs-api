@@ -1,4 +1,5 @@
 import find from "../helpers/find.helper";
+import { addToJson, updateJson, deleteJson } from "../helpers/jsonFile.helper";
 import { IProduct } from "../interfaces/IProduct";
 
 export class ProductsService {
@@ -18,5 +19,17 @@ export class ProductsService {
       key: "id",
       value: +id,
     });
+  }
+
+  addNewProduct(data: IProduct) {
+    return addToJson({ dataset: data });
+  }
+
+  updateProduct(id: string, data: IProduct) {
+    return updateJson({ id: id, dataset: data });
+  }
+
+  deleteProduct(id: string, data: IProduct) {
+    return deleteJson({ id: id, dataset: data });
   }
 }

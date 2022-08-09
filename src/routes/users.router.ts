@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-const data = require("../../db.json");
+const data = require("../mocks/users.json");
 
 const userRouter = express.Router();
 
@@ -7,7 +7,7 @@ userRouter.get("/", (req: Request, res: Response) => {
   const { email, password } = req.query;
 
   try {
-    if (!email || !password) throw new Error('Invalid credentials');
+    if (!email || !password) throw new Error("Invalid credentials");
 
     const user = data.users.find(
       (o: any) => o.email === email && o.password === password

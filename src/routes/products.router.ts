@@ -17,4 +17,19 @@ productRouter.get("/:id", (req: Request, res: Response) => {
   res.json(productsService.getProductById(id));
 });
 
+productRouter.post("/AddNewProduct", (req: Request, res: Response) => {
+  if (!req.body) throw new Error("Product data not found");
+  res.json(productsService.addNewProduct(req.body));
+});
+
+productRouter.put("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.json(productsService.updateProduct(id, req.body));
+});
+
+productRouter.delete("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.json(productsService.deleteProduct(id, req.body));
+});
+
 export default productRouter;
