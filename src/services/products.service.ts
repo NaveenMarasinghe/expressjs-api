@@ -4,9 +4,11 @@ import { IProduct } from "../interfaces/IProduct";
 
 export class ProductsService {
   datasource: IProduct[];
+  jsonFileLocation: string;
 
   constructor(datasource: IProduct[]) {
     this.datasource = datasource;
+    this.jsonFileLocation = "../mocks/products.json";
   }
 
   getAllProducts() {
@@ -22,14 +24,22 @@ export class ProductsService {
   }
 
   addNewProduct(data: IProduct) {
-    return addToJson({ dataset: data });
+    return addToJson({ dataset: data, dataFile: this.jsonFileLocation });
   }
 
   updateProduct(id: string, data: IProduct) {
-    return updateJson({ id: id, dataset: data });
+    return updateJson({
+      id: id,
+      dataset: data,
+      dataFile: this.jsonFileLocation,
+    });
   }
 
   deleteProduct(id: string, data: IProduct) {
-    return deleteJson({ id: id, dataset: data });
+    return deleteJson({
+      id: id,
+      dataset: data,
+      dataFile: this.jsonFileLocation,
+    });
   }
 }
