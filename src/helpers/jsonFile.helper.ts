@@ -2,7 +2,7 @@ import path from "path";
 import { IProduct } from "../interfaces/IProduct";
 
 interface IAddToJsonOptions {
-  dataset: any;
+  dataset?: any;
   id?: string;
   dataFile?: string;
 }
@@ -31,6 +31,7 @@ export function addToJson(options: IAddToJsonOptions) {
   fs.writeFile(path.resolve(__dirname, dataFile), newData, (err: any) => {
     if (err) throw err;
   });
+  return [];
 }
 
 export function updateJson(options: IAddToJsonOptions) {
@@ -54,8 +55,7 @@ export function updateJson(options: IAddToJsonOptions) {
 
 export function deleteJson(options: IAddToJsonOptions) {
   const fs = require("fs");
-  const { id, dataset, dataFile } = options;
-  if (!dataset) throw new InvalidDatasetError();
+  const { id, dataFile } = options;
   if (!dataFile) throw new Error("JSON file location not found");
 
   const data = fs.readFileSync(path.resolve(path.resolve(__dirname, dataFile)));

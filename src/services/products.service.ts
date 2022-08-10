@@ -11,7 +11,7 @@ export class ProductsService {
     this.jsonFileLocation = "../mocks/products.json";
   }
 
-  getAllProducts() {
+  getAllProducts(): IProduct[] {
     return find<IProduct>({ dataset: this.datasource });
   }
 
@@ -35,10 +35,9 @@ export class ProductsService {
     });
   }
 
-  deleteProduct(id: string, data: IProduct) {
+  deleteProduct(id: string) {
     return deleteJson({
       id: id,
-      dataset: data,
       dataFile: this.jsonFileLocation,
     });
   }

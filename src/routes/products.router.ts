@@ -1,35 +1,33 @@
 import express, { Request, Response } from "express";
 import { ProductsService } from "../services/products.service";
 import products from "../mocks/products.json";
+import ProductsController from "../controllers/products.controller";
 
 const productRouter = express.Router();
-
-const productsDataSource = products;
-
-const productsService = new ProductsService(productsDataSource);
+const productsController = new ProductsController();
 
 productRouter.get("/", (req: Request, res: Response) => {
-  res.json(productsService.getAllProducts());
+  res.json(productsController.getAllProducts());
 });
 
 productRouter.get("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(productsService.getProductById(id));
+  res.json(productsController.getProductById(id));
 });
 
-productRouter.post("/AddNewProduct", (req: Request, res: Response) => {
+productRouter.post("/add", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Product data not found");
-  res.json(productsService.addNewProduct(req.body));
+  res.json(productsController.addNewProduct(req.body));
 });
 
 productRouter.put("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(productsService.updateProduct(id, req.body));
+  res.json(productsController.updateProduct(id, req.body));
 });
 
 productRouter.delete("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(productsService.deleteProduct(id, req.body));
+  res.json(productsController.deleteProduct(id));
 });
 
 export default productRouter;

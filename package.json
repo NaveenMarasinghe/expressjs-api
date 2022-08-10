@@ -18,7 +18,8 @@
   "homepage": "https://github.com/NaveenMare/modern-walk-expressjs-api#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "tsoa": "^4.1.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

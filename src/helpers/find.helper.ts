@@ -36,4 +36,6 @@ export default function find<T extends IModel, K = any>(
 
   if (!key && value) throw new InvalidKeyValuePair();
   if (key && value) return dataset.filter((datum: T) => datum[key] === value);
+
+  return [];
 }
