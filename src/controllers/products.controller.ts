@@ -23,10 +23,10 @@ export default class ProductsController {
     return this.productsService.getProductById(id);
   }
 
-  // @Post("/add")
-  // public addNewProduct(data: IProduct): IProduct[] {
-  //   return this.productsService.addNewProduct(data);
-  // }
+  @Post("/add")
+  public addNewProduct(data: IProduct): IProduct[] {
+    return this.productsService.addNewProduct(data);
+  }
 
   @Put("/:id")
   public updateProduct(id: string, data: IProduct) {
