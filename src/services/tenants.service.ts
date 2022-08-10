@@ -1,19 +1,22 @@
+import { connected } from "process";
 import find from "../helpers/find.helper";
 import { addToJson, updateJson, deleteJson } from "../helpers/jsonFile.helper";
 import { ITenant } from "../interfaces/ITenant";
 
 export class TenantsService {
   datasource: ITenant[];
+  jsonFileLocation: string;
 
   constructor(datasource: ITenant[]) {
     this.datasource = datasource;
+    this.jsonFileLocation = "../mocks/tenants.json";
   }
 
   getAllTenants() {
     return find<ITenant>({ dataset: this.datasource });
   }
 
-  getProductByCode(code: string) {
+  getTenantByCode(code: string) {
     return find<ITenant, string>({
       dataset: this.datasource,
       key: "code",
@@ -22,14 +25,22 @@ export class TenantsService {
   }
 
   addNewTenant(data: ITenant) {
-    return addToJson({ dataset: data });
+    return addToJson({ dataset: data, dataFile: this.jsonFileLocation });
   }
 
   updateTenant(id: string, data: ITenant) {
-    return updateJson({ id: id, dataset: data });
+    return updateJson({
+      id: id,
+      dataset: data,
+      dataFile: this.jsonFileLocation,
+    });
   }
 
   deleteTenant(id: string, data: ITenant) {
-    return deleteJson({ id: id, dataset: data });
+    return deleteJson({
+      id: id,
+      dataset: data,
+      dataFile: this.jsonFileLocation,
+    });
   }
 }
