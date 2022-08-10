@@ -35,10 +35,9 @@ export class CategoriesService {
     });
   }
 
-  deleteCategory(id: string, data: ICategories) {
+  deleteCategory(id: string) {
     return deleteJson({
       id: id,
-      dataset: data,
       dataFile: this.jsonFileLocation,
     });
   }

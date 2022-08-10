@@ -36,10 +36,9 @@ export class TenantsService {
     });
   }
 
-  deleteTenant(id: string, data: ITenant) {
+  deleteTenant(id: string) {
     return deleteJson({
       id: id,
-      dataset: data,
       dataFile: this.jsonFileLocation,
     });
   }
