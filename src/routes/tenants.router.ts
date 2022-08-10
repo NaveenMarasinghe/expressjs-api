@@ -29,7 +29,7 @@ tenantsRouter.put("/:id", (req: Request, res: Response) => {
 
 tenantsRouter.delete("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(tenantsService.deleteTenant(id, req.body));
+  res.json(tenantsService.deleteTenant(id));
 });
 
 export default tenantsRouter;

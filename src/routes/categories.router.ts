@@ -29,7 +29,7 @@ categoriesRouter.put("/:id", (req: Request, res: Response) => {
 
 categoriesRouter.delete("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(categoriesService.deleteCategory(id, req.body));
+  res.json(categoriesService.deleteCategory(id));
 });
 
 export default categoriesRouter;
