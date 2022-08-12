@@ -3,7 +3,7 @@ import { IUser } from "../interfaces/IUser";
 import users from "../mocks/users.json";
 import { UsersService } from "../services/users.service";
 
-@Route("api/tenants")
+@Route("api/users")
 export default class UsersController {
   usersDataSource;
   usersService;
@@ -30,8 +30,8 @@ export default class UsersController {
   }
 
   @Put("/:id")
-  public updateUser(id: string) {
-    // return this.usersService.updateUser(id, data);
+  public updateUser(id: string, @Body() data: IUser) {
+    return this.usersService.updateUser(id, data);
   }
 
   @Delete("/:id")

@@ -14,28 +14,28 @@ export default class TenantsController {
   }
 
   @Get("/")
-  public getAllProducts(): ITenant[] {
+  public getAllTenants(): ITenant[] {
     return this.tenantsService.getAllTenants();
   }
 
   @Get("/:id")
-  public getProductById(id: string): ITenant[] {
+  public getTenantByCode(id: string): ITenant[] {
     return this.tenantsService.getTenantByCode(id);
   }
 
   @Route("/add")
   @Post()
-  public addNewProduct(@Body() data: ITenant): ITenant[] {
+  public addNewTenant(@Body() data: ITenant): ITenant[] {
     return this.tenantsService.addNewTenant(data);
   }
 
   @Put("/:id")
-  public updateProduct(id: string, data: ITenant) {
+  public updateTenant(id: string, @Body() data: ITenant) {
     return this.tenantsService.updateTenant(id, data);
   }
 
   @Delete("/:id")
-  public deleteProduct(id: string) {
+  public deleteTenant(id: string) {
     return this.tenantsService.deleteTenant(id);
   }
 }

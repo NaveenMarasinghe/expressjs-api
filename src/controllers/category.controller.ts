@@ -3,38 +3,39 @@ import { ICategories } from "../interfaces/ICategories";
 import categories from "../mocks/categories.json";
 import { CategoriesService } from "../services/categories.service";
 
-@Route("api/products")
+@Route("api/categories")
 export default class CategoriesController {
   categoriesDataSource;
-  productsService;
+  categoryService;
 
   constructor() {
     this.categoriesDataSource = categories;
-    this.productsService = new CategoriesService(this.categoriesDataSource);
+    this.categoryService = new CategoriesService(this.categoriesDataSource);
   }
 
   @Get("/")
-  public getAllProducts(): ICategories[] {
-    return this.productsService.getAllCategories();
+  public getAllCategories(): ICategories[] {
+    return this.categoryService.getAllCategories();
   }
 
   @Get("/:id")
-  public getProductById(id: string): ICategories[] {
-    return this.productsService.getCategoryById(id);
+  public getCategoryById(id: string): ICategories[] {
+    return this.categoryService.getCategoryById(id);
   }
+
   @Route("/add")
   @Post()
-  public addNewProduct(@Body() data: ICategories): ICategories[] {
-    return this.productsService.addNewCategory(data);
+  public addNewCategory(@Body() data: ICategories): ICategories[] {
+    return this.categoryService.addNewCategory(data);
   }
 
   @Put("/:id")
-  public updateProduct(id: string, data: ICategories) {
-    return this.productsService.updateCategory(id, data);
+  public updateCategory(id: string, @Body() data: ICategories) {
+    return this.categoryService.updateCategory(id, data);
   }
 
   @Delete("/:id")
-  public deleteProduct(id: string) {
-    return this.productsService.deleteCategory(id);
+  public deleteCategory(id: string) {
+    return this.categoryService.deleteCategory(id);
   }
 }

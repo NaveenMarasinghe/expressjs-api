@@ -26,13 +26,12 @@ export default class ProductsController {
   @Route("/add")
   @Post()
   public addNewProduct(@Body() data: any) {
-    console.log(data);
-    //return this.productsService.addNewProduct(data);
+    return this.productsService.addNewProduct(data);
   }
 
   @Put("/:id")
-  public updateProduct(id: string) {
-    // return this.productsService.updateProduct(id, data);
+  public updateProduct(id: string, @Body() data: IProduct) {
+    return this.productsService.updateProduct(id, data);
   }
 
   @Delete("/:id")

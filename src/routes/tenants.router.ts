@@ -1,35 +1,31 @@
 import express, { Request, Response } from "express";
-import { TenantsService } from "../services/tenants.service";
-import tenants from "../mocks/tenants.json";
+import TenantsController from "../controllers/tenants.controller";
 
 const tenantsRouter = express.Router();
-
-const tenantsDataSource = tenants;
-
-const tenantsService = new TenantsService(tenantsDataSource);
+const tenantsController = new TenantsController();
 
 tenantsRouter.get("/", (req: Request, res: Response) => {
-  res.json(tenantsService.getAllTenants());
+  res.json(tenantsController.getAllTenants());
 });
 
 tenantsRouter.get("/:code", (req: Request, res: Response) => {
   const { code } = req.params;
-  res.json(tenantsService.getTenantByCode(code));
+  res.json(tenantsController.getTenantByCode(code));
 });
 
 tenantsRouter.post("/add", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Tenant data not found");
-  res.json(tenantsService.addNewTenant(req.body));
+  res.json(tenantsController.addNewTenant(req.body));
 });
 
 tenantsRouter.put("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(tenantsService.updateTenant(id, req.body));
+  res.json(tenantsController.updateTenant(id, req.body));
 });
 
 tenantsRouter.delete("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(tenantsService.deleteTenant(id));
+  res.json(tenantsController.deleteTenant(id));
 });
 
 export default tenantsRouter;

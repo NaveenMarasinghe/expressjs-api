@@ -1,35 +1,31 @@
 import express, { Request, Response } from "express";
-import { CategoriesService } from "../services/categories.service";
-import categories from "../mocks/categories.json";
+import CategoriesController from "../controllers/category.controller";
 
 const categoriesRouter = express.Router();
-
-const categoriesDataSource = categories;
-
-const categoriesService = new CategoriesService(categoriesDataSource);
+const categoriesController = new CategoriesController();
 
 categoriesRouter.get("/", (req: Request, res: Response) => {
-  res.json(categoriesService.getAllCategories());
+  res.json(categoriesController.getAllCategories);
 });
 
 categoriesRouter.get("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(categoriesService.getCategoryById(id));
+  res.json(categoriesController.getCategoryById(id));
 });
 
 categoriesRouter.post("/add", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Category data not found");
-  res.json(categoriesService.addNewCategory(req.body));
+  res.json(categoriesController.addNewCategory(req.body));
 });
 
 categoriesRouter.put("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(categoriesService.updateCategory(id, req.body));
+  res.json(categoriesController.updateCategory(id, req.body));
 });
 
 categoriesRouter.delete("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(categoriesService.deleteCategory(id));
+  res.json(categoriesController.deleteCategory(id));
 });
 
 export default categoriesRouter;

@@ -20,7 +20,7 @@ userRouter.post("/add", (req: Request, res: Response) => {
 
 userRouter.put("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(usersController.updateUser(id));
+  res.json(usersController.updateUser(id, req.body));
 });
 
 userRouter.delete("/:id", (req: Request, res: Response) => {
