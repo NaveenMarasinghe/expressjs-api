@@ -22,8 +22,8 @@ export default class CategoriesController {
   public getProductById(id: string): ICategories[] {
     return this.productsService.getCategoryById(id);
   }
-
-  @Post("/add")
+  @Route("/add")
+  @Post()
   public addNewProduct(data: ICategories): ICategories[] {
     return this.productsService.addNewCategory(data);
   }

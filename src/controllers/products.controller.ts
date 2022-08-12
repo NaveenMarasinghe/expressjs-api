@@ -1,4 +1,4 @@
-import { Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route } from "tsoa";
 import { IProduct } from "../interfaces/IProduct";
 import products from "../mocks/products.json";
 import { ProductsService } from "../services/products.service";
@@ -23,14 +23,16 @@ export default class ProductsController {
     return this.productsService.getProductById(id);
   }
 
-  @Post("/add")
-  public addNewProduct(data: IProduct): IProduct[] {
-    return this.productsService.addNewProduct(data);
+  @Route("/add")
+  @Post()
+  public addNewProduct(@Body() data: any) {
+    console.log(data);
+    //return this.productsService.addNewProduct(data);
   }
 
   @Put("/:id")
-  public updateProduct(id: string, data: IProduct) {
-    return this.productsService.updateProduct(id, data);
+  public updateProduct(id: string) {
+    // return this.productsService.updateProduct(id, data);
   }
 
   @Delete("/:id")

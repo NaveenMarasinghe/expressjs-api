@@ -23,7 +23,8 @@ export default class TenantsController {
     return this.tenantsService.getTenantByCode(id);
   }
 
-  @Post("/add")
+  @Route("/add")
+  @Post()
   public addNewProduct(data: ITenant): ITenant[] {
     return this.tenantsService.addNewTenant(data);
   }

@@ -22,7 +22,7 @@ productRouter.post("/add", (req: Request, res: Response) => {
 
 productRouter.put("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  res.json(productsController.updateProduct(id, req.body));
+  res.json(productsController.updateProduct(id));
 });
 
 productRouter.delete("/:id", (req: Request, res: Response) => {
