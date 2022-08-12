@@ -1,3 +1,44 @@
-import express, { Request, Response } from "express";
+import find from "../helpers/find.helper";
+import { addToJson, updateJson, deleteJson } from "../helpers/jsonFile.helper";
+import { IUser } from "../interfaces/IUser";
 
-export class UsersService {}
+export class UsersService {
+  datasource: IUser[];
+  jsonFileLocation: string;
+
+  constructor(datasource: IUser[]) {
+    this.datasource = datasource;
+    this.jsonFileLocation = "../mocks/users.json";
+  }
+
+  getAllUsers() {
+    return find<IUser>({ dataset: this.datasource });
+  }
+
+  getUserById(id: string) {
+    return find<IUser, string>({
+      dataset: this.datasource,
+      key: "id",
+      value: id,
+    });
+  }
+
+  addNewUser(data: IUser) {
+    return addToJson({ dataset: data, dataFile: this.jsonFileLocation });
+  }
+
+  updateUser(id: string, data: IUser) {
+    return updateJson({
+      id: id,
+      dataset: data,
+      dataFile: this.jsonFileLocation,
+    });
+  }
+
+  deleteUser(id: string) {
+    return deleteJson({
+      id: id,
+      dataFile: this.jsonFileLocation,
+    });
+  }
+}

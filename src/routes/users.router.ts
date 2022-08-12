@@ -1,31 +1,31 @@
 import express, { Request, Response } from "express";
-const data = require("../mocks/users.json");
+import UsersController from "../controllers/users.controller";
 
 const userRouter = express.Router();
+const usersController = new UsersController();
 
 userRouter.get("/", (req: Request, res: Response) => {
-  const { email, password } = req.query;
-
-  try {
-    if (!email || !password) throw new Error("Invalid credentials");
-
-    const user = data.users.find(
-      (o: any) => o.email === email && o.password === password
-    );
-    console.log(user);
-    res.json(user);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  res.json(usersController.getAllUsers);
 });
 
-userRouter.post("/", (req: Request, res: Response) => {
-  try {
-    console.log(req.body);
-    res.json({ message: "User added", user: req.body });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+userRouter.get("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.json(usersController.getUserById(id));
+});
+
+userRouter.post("/add", (req: Request, res: Response) => {
+  if (!req.body) throw new Error("Product data not found");
+  res.json(usersController.addNewUser(req.body));
+});
+
+userRouter.put("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.json(usersController.updateUser(id));
+});
+
+userRouter.delete("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.json(usersController.deleteUser(id));
 });
 
 export default userRouter;

@@ -1,4 +1,4 @@
-import { Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route } from "tsoa";
 import { ICategories } from "../interfaces/ICategories";
 import categories from "../mocks/categories.json";
 import { CategoriesService } from "../services/categories.service";
@@ -24,7 +24,7 @@ export default class CategoriesController {
   }
   @Route("/add")
   @Post()
-  public addNewProduct(data: ICategories): ICategories[] {
+  public addNewProduct(@Body() data: ICategories): ICategories[] {
     return this.productsService.addNewCategory(data);
   }
 

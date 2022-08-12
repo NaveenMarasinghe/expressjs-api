@@ -1,4 +1,4 @@
-import { Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route } from "tsoa";
 import { ITenant } from "../interfaces/ITenant";
 import tenants from "../mocks/tenants.json";
 import { TenantsService } from "../services/tenants.service";
@@ -25,7 +25,7 @@ export default class TenantsController {
 
   @Route("/add")
   @Post()
-  public addNewProduct(data: ITenant): ITenant[] {
+  public addNewProduct(@Body() data: ITenant): ITenant[] {
     return this.tenantsService.addNewTenant(data);
   }
 

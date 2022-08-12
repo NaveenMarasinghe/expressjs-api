@@ -1,6 +1,4 @@
 import express, { Request, Response } from "express";
-import { ProductsService } from "../services/products.service";
-import products from "../mocks/products.json";
 import ProductsController from "../controllers/products.controller";
 
 const productRouter = express.Router();
