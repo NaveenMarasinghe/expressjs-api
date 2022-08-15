@@ -22,8 +22,11 @@ TypeScript, Node.js, Express.js
 
 | Method | Path                 | Description               |
 | -------| ---------------------| --------------------------|
-| GET    | /users?email={email}&password={password}| Find a user by email and password             |
-| POST   | /users              | Add a new user              |
+| GET    | /users| Get all users       |
+| GET    | /users/id | Find one user by id           |
+| POST   | /users/add              | Add a new user              |
+| PUT   | /users/{id}              | Update one user by id          |
+| DELETE   | /users/{id}              | Delete one user by id             |
 
 #### Products
 
