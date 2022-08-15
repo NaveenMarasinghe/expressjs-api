@@ -1,9 +1,10 @@
-import { Body, Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route, Tags } from "tsoa";
 import { ITenant } from "../interfaces/ITenant";
 import tenants from "../mocks/tenants.json";
 import { TenantsService } from "../services/tenants.service";
 
 @Route("api/tenants")
+@Tags("Tenants")
 export default class TenantsController {
   tenantDataSource;
   tenantsService;

@@ -1,9 +1,10 @@
-import { Body, Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route, Tags } from "tsoa";
 import { ICategories } from "../interfaces/ICategories";
 import categories from "../mocks/categories.json";
 import { CategoriesService } from "../services/categories.service";
 
 @Route("api/categories")
+@Tags("Categories")
 export default class CategoriesController {
   categoriesDataSource;
   categoryService;

@@ -1,9 +1,10 @@
-import { Body, Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route, Tags } from "tsoa";
 import { IUser } from "../interfaces/IUser";
 import users from "../mocks/users.json";
 import { UsersService } from "../services/users.service";
 
 @Route("api/users")
+@Tags("Users")
 export default class UsersController {
   usersDataSource;
   usersService;

@@ -1,9 +1,10 @@
-import { Body, Delete, Get, Post, Put, Route } from "tsoa";
+import { Body, Delete, Get, Post, Put, Route, Tags } from "tsoa";
 import { IProduct } from "../interfaces/IProduct";
 import products from "../mocks/products.json";
 import { ProductsService } from "../services/products.service";
 
 @Route("api/products")
+@Tags("Products")
 export default class ProductsController {
   productsDataSource;
   productsService;
