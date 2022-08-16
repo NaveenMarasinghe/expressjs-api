@@ -3,7 +3,7 @@ import { ITenant } from "../interfaces/ITenant";
 import tenants from "../mocks/tenants.json";
 import { TenantsService } from "../services/tenants.service";
 
-@Route("api/tenants")
+@Route("api/v1/tenants")
 @Tags("Tenants")
 export default class TenantsController {
   tenantDataSource;

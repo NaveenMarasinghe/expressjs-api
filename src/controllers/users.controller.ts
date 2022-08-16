@@ -3,7 +3,7 @@ import { IUser } from "../interfaces/IUser";
 import users from "../mocks/users.json";
 import { UsersService } from "../services/users.service";
 
-@Route("api/users")
+@Route("api/v1/users")
 @Tags("Users")
 export default class UsersController {
   usersDataSource;
