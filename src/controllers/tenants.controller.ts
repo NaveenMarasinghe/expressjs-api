@@ -19,9 +19,9 @@ export default class TenantsController {
     return this.tenantsService.getAllTenants();
   }
 
-  @Get("/:id")
-  public getTenantByCode(id: string): ITenant[] {
-    return this.tenantsService.getTenantByCode(id);
+  @Get("/:code")
+  public getTenantByCode(code: string): ITenant[] {
+    return this.tenantsService.getTenantByCode(code);
   }
 
   @Route("/add")
