@@ -16,10 +16,10 @@ export class UsersService {
   }
 
   getUserById(id: string) {
-    return find<IUser, string>({
+    return find<IUser, number>({
       dataset: this.datasource,
       key: "id",
-      value: id,
+      value: +id,
     });
   }
 

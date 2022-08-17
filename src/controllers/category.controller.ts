@@ -21,6 +21,7 @@ export default class CategoriesController {
 
   @Get("/:id")
   public getCategoryById(id: string): ICategories[] {
+    console.log("Return one category")
     return this.categoryService.getCategoryById(id);
   }
 
