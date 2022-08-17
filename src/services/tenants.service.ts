@@ -30,7 +30,7 @@ export class TenantsService {
 
   updateTenant(id: string, data: ITenant) {
     return updateJson({
-      id: id,
+      id: parseInt(id),
       dataset: data,
       dataFile: this.jsonFileLocation,
     });
@@ -38,7 +38,7 @@ export class TenantsService {
 
   deleteTenant(id: string) {
     return deleteJson({
-      id: id,
+      id: parseInt(id),
       dataFile: this.jsonFileLocation,
     });
   }

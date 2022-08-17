@@ -1,9 +1,10 @@
 import path from "path";
 import { IProduct } from "../interfaces/IProduct";
+import find from "../helpers/find.helper";
 
 interface IAddToJsonOptions {
   dataset?: any;
-  id?: string;
+  id?: number;
   dataFile?: string;
 }
 
@@ -31,7 +32,7 @@ export function addToJson(options: IAddToJsonOptions) {
   fs.writeFile(path.resolve(__dirname, dataFile), newData, (err: any) => {
     if (err) throw err;
   });
-  return [];
+  return [dataset];
 }
 
 export function updateJson(options: IAddToJsonOptions) {
@@ -44,13 +45,15 @@ export function updateJson(options: IAddToJsonOptions) {
   var dataObject = JSON.parse(data);
 
   const updatedData = dataObject.map((data: IProduct) =>
-    data.id.toString() == id ? { ...dataset } : data
+    data.id == id ? { ...dataset } : data
   );
 
   const newData = JSON.stringify(updatedData);
   fs.writeFile(path.resolve(__dirname, dataFile), newData, (err: any) => {
     if (err) throw err;
   });
+  const responseData = find({ dataset: updatedData, key: "id", value: id });
+  return responseData;
 }
 
 export function deleteJson(options: IAddToJsonOptions) {
@@ -61,9 +64,7 @@ export function deleteJson(options: IAddToJsonOptions) {
   const data = fs.readFileSync(path.resolve(path.resolve(__dirname, dataFile)));
   var dataObject = JSON.parse(data);
 
-  const updatedData = dataObject.filter(
-    (data: IProduct) => data.id.toString() !== id
-  );
+  const updatedData = dataObject.filter((data: IProduct) => data.id !== id);
 
   const newData = JSON.stringify(updatedData);
   fs.writeFile(path.resolve(__dirname, dataFile), newData, (err: any) => {

@@ -29,7 +29,7 @@ export class ProductsService {
 
   updateProduct(id: string, data: IProduct) {
     return updateJson({
-      id: id,
+      id: parseInt(id),
       dataset: data,
       dataFile: this.jsonFileLocation,
     });
@@ -37,7 +37,7 @@ export class ProductsService {
 
   deleteProduct(id: string) {
     return deleteJson({
-      id: id,
+      id: parseInt(id),
       dataFile: this.jsonFileLocation,
     });
   }

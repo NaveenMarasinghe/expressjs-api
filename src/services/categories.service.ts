@@ -29,7 +29,7 @@ export class CategoriesService {
 
   updateCategory(id: string, data: ICategories) {
     return updateJson({
-      id: id,
+      id: parseInt(id),
       dataset: data,
       dataFile: this.jsonFileLocation,
     });
@@ -37,7 +37,7 @@ export class CategoriesService {
 
   deleteCategory(id: string) {
     return deleteJson({
-      id: id,
+      id: parseInt(id),
       dataFile: this.jsonFileLocation,
     });
   }

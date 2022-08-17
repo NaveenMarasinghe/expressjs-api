@@ -29,7 +29,7 @@ export class UsersService {
 
   updateUser(id: string, data: IUser) {
     return updateJson({
-      id: id,
+      id: parseInt(id),
       dataset: data,
       dataFile: this.jsonFileLocation,
     });
@@ -37,7 +37,7 @@ export class UsersService {
 
   deleteUser(id: string) {
     return deleteJson({
-      id: id,
+      id: parseInt(id),
       dataFile: this.jsonFileLocation,
     });
   }
