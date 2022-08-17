@@ -3,7 +3,7 @@ import { ICategories } from "../interfaces/ICategories";
 import categories from "../mocks/categories.json";
 import { CategoriesService } from "../services/categories.service";
 
-@Route("api/categories")
+@Route("api/v1/categories")
 @Tags("Categories")
 export default class CategoriesController {
   categoriesDataSource;
@@ -24,8 +24,7 @@ export default class CategoriesController {
     return this.categoryService.getCategoryById(id);
   }
 
-  @Route("/add")
-  @Post()
+  @Post("/add")
   public addNewCategory(@Body() data: ICategories): ICategories[] {
     return this.categoryService.addNewCategory(data);
   }

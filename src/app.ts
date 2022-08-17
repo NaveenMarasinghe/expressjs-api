@@ -20,7 +20,7 @@ app.use("/api/v1/users", usersRouter);
 
 app.use(express.static("dist"));
 app.use(
-  "/api/swagger",
+  "/api/v1/swagger",
   swaggerUi.serve,
   swaggerUi.setup(undefined, {
     swaggerOptions: {

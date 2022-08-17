@@ -3,7 +3,7 @@ import { ITenant } from "../interfaces/ITenant";
 import tenants from "../mocks/tenants.json";
 import { TenantsService } from "../services/tenants.service";
 
-@Route("api/tenants")
+@Route("api/v1/tenants")
 @Tags("Tenants")
 export default class TenantsController {
   tenantDataSource;
@@ -24,8 +24,7 @@ export default class TenantsController {
     return this.tenantsService.getTenantByCode(id);
   }
 
-  @Route("/add")
-  @Post()
+  @Post("/add")
   public addNewTenant(@Body() data: ITenant): ITenant[] {
     return this.tenantsService.addNewTenant(data);
   }

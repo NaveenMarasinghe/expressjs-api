@@ -3,7 +3,7 @@ import { IProduct } from "../interfaces/IProduct";
 import products from "../mocks/products.json";
 import { ProductsService } from "../services/products.service";
 
-@Route("api/products")
+@Route("api/v1/products")
 @Tags("Products")
 export default class ProductsController {
   productsDataSource;
@@ -24,8 +24,7 @@ export default class ProductsController {
     return this.productsService.getProductById(id);
   }
 
-  @Route("/add")
-  @Post()
+  @Post("/add")
   public addNewProduct(@Body() data: any) {
     return this.productsService.addNewProduct(data);
   }

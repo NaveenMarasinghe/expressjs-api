@@ -3,7 +3,7 @@ import { IUser } from "../interfaces/IUser";
 import users from "../mocks/users.json";
 import { UsersService } from "../services/users.service";
 
-@Route("api/users")
+@Route("api/v1/users")
 @Tags("Users")
 export default class UsersController {
   usersDataSource;
@@ -24,8 +24,7 @@ export default class UsersController {
     return this.usersService.getUserById(id);
   }
 
-  @Route("/add")
-  @Post()
+  @Post("/add")
   public addNewUser(@Body() data: IUser): IUser[] {
     return this.usersService.addNewUser(data);
   }
