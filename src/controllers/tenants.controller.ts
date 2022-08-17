@@ -3,7 +3,7 @@ import { ITenant } from "../interfaces/ITenant";
 import tenants from "../mocks/tenants.json";
 import { TenantsService } from "../services/tenants.service";
 
-@Route("api/tenants")
+@Route("api/v1/tenants")
 @Tags("Tenants")
 export default class TenantsController {
   tenantDataSource;
@@ -19,9 +19,9 @@ export default class TenantsController {
     return this.tenantsService.getAllTenants();
   }
 
-  @Get("/:id")
-  public getTenantByCode(id: string): ITenant[] {
-    return this.tenantsService.getTenantByCode(id);
+  @Get("/:code")
+  public getTenantByCode(code: string): ITenant[] {
+    return this.tenantsService.getTenantByCode(code);
   }
 
   @Route("/add")
