@@ -24,7 +24,7 @@ export default class UsersController {
     return this.usersService.getUserById(id);
   }
 
-  @Post("/add")
+  @Post("/")
   public addNewUser(@Body() data: IUser): IUser[] {
     return this.usersService.addNewUser(data);
   }

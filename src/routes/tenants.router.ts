@@ -13,7 +13,7 @@ tenantsRouter.get("/:code", (req: Request, res: Response) => {
   res.json(tenantsController.getTenantByCode(code));
 });
 
-tenantsRouter.post("/add", (req: Request, res: Response) => {
+tenantsRouter.post("/", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Tenant data not found");
   res.json(tenantsController.addNewTenant(req.body));
 });

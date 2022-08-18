@@ -24,7 +24,7 @@ export default class TenantsController {
     return this.tenantsService.getTenantByCode(code);
   }
 
-  @Post("/add")
+  @Post("/")
   public addNewTenant(@Body() data: ITenant): ITenant[] {
     return this.tenantsService.addNewTenant(data);
   }

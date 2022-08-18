@@ -24,7 +24,7 @@ export default class ProductsController {
     return this.productsService.getProductById(id);
   }
 
-  @Post("/add")
+  @Post("/")
   public addNewProduct(@Body() data: any) {
     return this.productsService.addNewProduct(data);
   }

@@ -13,7 +13,7 @@ userRouter.get("/:id", (req: Request, res: Response) => {
   res.json(usersController.getUserById(id));
 });
 
-userRouter.post("/add", (req: Request, res: Response) => {
+userRouter.post("/", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Product data not found");
   res.json(usersController.addNewUser(req.body));
 });

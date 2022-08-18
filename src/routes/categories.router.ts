@@ -13,7 +13,7 @@ categoriesRouter.get("/:id", (req: Request, res: Response) => {
   res.json(categoriesController.getCategoryById(id));
 });
 
-categoriesRouter.post("/add", (req: Request, res: Response) => {
+categoriesRouter.post("/", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Category data not found");
   res.json(categoriesController.addNewCategory(req.body));
 });

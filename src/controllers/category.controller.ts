@@ -21,11 +21,11 @@ export default class CategoriesController {
 
   @Get("/:id")
   public getCategoryById(id: string): ICategories[] {
-    console.log("Return one category")
+    console.log("Return one category");
     return this.categoryService.getCategoryById(id);
   }
 
-  @Post("/add")
+  @Post("/")
   public addNewCategory(@Body() data: ICategories): ICategories[] {
     return this.categoryService.addNewCategory(data);
   }

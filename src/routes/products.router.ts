@@ -13,7 +13,7 @@ productRouter.get("/:id", (req: Request, res: Response) => {
   res.json(productsController.getProductById(id));
 });
 
-productRouter.post("/add", (req: Request, res: Response) => {
+productRouter.post("/", (req: Request, res: Response) => {
   if (!req.body) throw new Error("Product data not found");
   res.json(productsController.addNewProduct(req.body));
 });
